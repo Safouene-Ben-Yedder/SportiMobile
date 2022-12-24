@@ -6,6 +6,7 @@ import jwtDecode from "jwt-decode";
 import MainNavigator from "./components/MainNavigator/MainNavigator";
 import { NativeBaseProvider } from "native-base";
 import LoginNavigator from "./components/LoginNavigator/LoginNavigator";
+import RegisterNavigator from "./components/RegisterNavigator/RegisterNavigator"
 
 export default function App() {
   const [user, setUser] = React.useState(null);
