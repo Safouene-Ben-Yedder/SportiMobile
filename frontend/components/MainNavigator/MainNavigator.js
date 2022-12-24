@@ -2,6 +2,8 @@ import * as React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 import { LieuCoach } from "../../screens/LieuCoach/lieuCoach";
+import { ProgrammeCoach } from "../../screens/ProgrammeCoach/programmeCoach";
+
 // import AbonnementCoach from "../../screens/AbonnementCoach/AbonnementCoach";
 // import DefiCoach from "../../screens/DefiCoach/defiCoach";
 // import EventCoach from "../../screens/EventCoach/eventCoach";
@@ -38,6 +40,8 @@ export default function MainNavigator() {
       }}
     >
       <Drawer.Screen name="Mes lieux" component={LieuCoach} />
+
+      <Drawer.Screen name="Mes programmes" component={ProgrammeCoach} />
       {/* <Drawer.Screen name="Mon abonnement" component={AbonnementCoach} />
       <Drawer.Screen name="Mes programmes" component={SeanceCoach} />
       <Drawer.Screen name="Mes défis" component={DefiCoach} />

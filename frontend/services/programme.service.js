@@ -1,40 +1,40 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-const API_URL = "http://192.168.1.19:8080/api/coach/lieu/";
+const API_URL = "http://192.168.1.19:8080/api/coach/programme/";
 
-const fetchLieux = async () => {
+const fetchProgrammes = async () => {
   AsyncStorage.getItem("@user").then(async (token) => {
     const result = await axios.get(`${API_URL}${token}`);
     return result;
   });
 };
 
-const fetchAllLieux = async () => {
+const fetchAllProgrammes = async () => {
   const result = await axios.get(`${API_URL}`);
   return result.data;
 };
 
-const postLieu = async (lieu) => {
+const postProgramme = async (programme) => {
   AsyncStorage.getItem("@user").then(async (token) => {
-    const result = await axios.post(API_URL + token, lieu);
+    const result = await axios.post(API_URL + token, programme);
     return result.data;
   });
 };
 
-const updateLieu = async (id, nom, ville, pays, adresse) => {
+const updateProgramme = async (id, title, description, src, video) => {
   AsyncStorage.getItem("@user").then(async (token) => {
     const result = await axios.put(`${API_URL}${id}/${token}`, {
-      nom,
-      ville,
-      pays,
-      adresse,
+      title,
+      description,
+      src,
+      video,
     });
     return result.data;
   });
 };
 
-const deleteLieu = async (id) => {
+const deleteProgramme = async (id) => {
   AsyncStorage.getItem("@user").then(async (token) => {
     const result = await axios.delete(`${API_URL}${id}/${token}`);
     console.log(id);
@@ -42,12 +42,12 @@ const deleteLieu = async (id) => {
   });
 };
 
-const LieuService = {
-  fetchLieux,
-  postLieu,
-  updateLieu,
-  deleteLieu,
-  fetchAllLieux,
+const ProgrammeService = {
+  fetchProgrammes,
+  postProgramme,
+  updateProgramme,
+  deleteProgramme,
+  fetchAllProgrammes,
 };
 
-export default LieuService;
+export default ProgrammeService;
