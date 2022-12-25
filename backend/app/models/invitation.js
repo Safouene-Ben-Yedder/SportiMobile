@@ -24,7 +24,7 @@ const invitationSchema = new mongoose.Schema(
       required: true,
       validate: {
         validator: function (val) {
-          return val.toString().length >= 10 && val.toString().length <= 14;
+          return (val.toString().length = 8);
         },
         message: `Phone number must be valid`,
       },

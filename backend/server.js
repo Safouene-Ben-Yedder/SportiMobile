@@ -10,7 +10,7 @@ const app = express();
 
 // donner une exception à la partie react de consommer le backend
 var corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:19006",
   optionsSuccessStatus: 200,
 };
 app.use(express.json({ limit: "50mb" }));
