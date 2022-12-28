@@ -29,16 +29,20 @@ export const InvitationForm = ({ navigation }) => {
     <Formik
       initialValues={{ email: "", nom: "", prenom: "", telephone: 0 }}
       onSubmit={(values) => {
-        InvitationService.invitation(values).then((rep) => console.log(rep));
+        InvitationService.SendInvitation(values).then((rep) =>
+          console.log(rep)
+        );
         console.log(values);
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: "Success",
-          textBody: "Joueur Invité !",
-          button: "close",
-        });
 
-        setTimeout(() => {}, 100);
+        setTimeout(() => {
+          Dialog.show({
+            type: ALERT_TYPE.SUCCESS,
+            title: "Success",
+            textBody: "Joueur Invité !",
+            button: "close",
+          });
+          navigation.goBack();
+        }, 100);
       }}
     >
       {({ handleChange, handleBlur, handleSubmit, values }) => (

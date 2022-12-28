@@ -12,6 +12,8 @@ import { View } from "native-base";
 import { Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { InvitationForm } from "../Invitation/InvitationForm";
+import { CompCoach } from "../../screens/CompCoach/CompCoach";
+import { StatCoach } from "../../screens/StatCoach/StatCoach";
 // import StatScreen from "../../screens/manageStats/statsScreen";
 // import InvitePlayer from "../../screens/InvitePlayer/invitePlayer";
 
@@ -41,8 +43,10 @@ export default function MainNavigator() {
       }}
     >
       <Drawer.Screen name="Mes lieux" component={LieuCoach} />
-
+      <Drawer.Screen name="Mes Compétences" component={CompCoach} />
+      <Drawer.Screen name="Mes statistiques" component={StatCoach} />
       <Drawer.Screen name="Mes programmes" component={ProgrammeCoach} />
+
       {/* <Drawer.Screen name="Mon abonnement" component={AbonnementCoach} />
       <Drawer.Screen name="Mes programmes" component={SeanceCoach} />
       <Drawer.Screen name="Mes défis" component={DefiCoach} />

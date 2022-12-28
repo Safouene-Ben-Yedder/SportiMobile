@@ -14,7 +14,7 @@ exports.create = (req, res) => {
       description: req.body.description,
       link: req.body.link,
       visible: req.body.visible,
-      stars: 0,
+      stars: req.body.stars,
       createdBy: decoded.user_id,
     });
 
