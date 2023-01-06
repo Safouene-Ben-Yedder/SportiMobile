@@ -1,8 +1,8 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://10.1.1.116:8080/api/coach/evenement/";
-const API_URL_Player = "http://10.1.1.116:8080/api/joueur/evenement/";
+const API_URL = "http://172.26.96.1:8080/api/coach/evenement/";
+const API_URL_Player = "http://172.26.96.1:8080/api/joueur/evenement/";
 
 const fetchEvent = async () => {
   const token = await AsyncStorage.getItem("@user");
@@ -43,8 +43,7 @@ const postEvent = async (event) => {
   });
 };
 
-
-const updateEvent = async (id,nom,description,date,lieu) => {
+const updateEvent = async (id, nom, description, date, lieu) => {
   AsyncStorage.getItem("@user").then(async (token) => {
     const result = await axios.put(`${API_URL}${id}/${token}`, {
       id,
@@ -52,13 +51,10 @@ const updateEvent = async (id,nom,description,date,lieu) => {
       description,
       date,
       lieu,
-
     });
     return result.data;
   });
 };
-
-
 
 const eventDone = async (id) => {
   const token = await AsyncStorage.getItem("@user");

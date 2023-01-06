@@ -1,15 +1,14 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://10.1.1.116:8080/api/coach/seance/";
-const API_URL_Player = "http://10.1.1.116:8080/api/joueur/seance/";
+const API_URL = "http://172.26.96.1:8080/api/coach/seance/";
+const API_URL_Player = "http://172.26.96.1:8080/api/joueur/seance/";
 
 const fetchSeance = async () => {
   const token = await AsyncStorage.getItem("@user");
   const result = await axios.get(`${API_URL}${token}`);
   return result.data;
 };
-
 
 export const annulerSeance = async (id, annuler, raisonAnnuler) => {
   const result = await axios.put(`${API_URL}annulerSeance/${id}/${token}`, {
@@ -19,8 +18,6 @@ export const annulerSeance = async (id, annuler, raisonAnnuler) => {
   return result.data;
 };
 
-
-
 export const feedbackSeance = async (id, objectifAtteint, feedback) => {
   const result = await axios.put(`${API_URL}feedbackSeance/${id}/${token}`, {
     objectifAtteint,
@@ -28,9 +25,6 @@ export const feedbackSeance = async (id, objectifAtteint, feedback) => {
   });
   return result.data;
 };
-
-
-
 
 const checkDone = async (id) => {
   const token = await AsyncStorage.getItem("@user");
@@ -67,7 +61,6 @@ const postSeance = async (seance) => {
   });
 };
 
-
 // , lieu, objectif, joueur, programme
 
 const updateSeance = async (id, nom, date, periode) => {
@@ -81,7 +74,6 @@ const updateSeance = async (id, nom, date, periode) => {
     // objectif,
     // joueur,
     // programme
-  
   });
   return result.data;
 };

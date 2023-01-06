@@ -2,7 +2,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import JwtDecode from "jwt-decode";
 
-const API_URL = "http://10.1.1.116:8080/api/coach/";
+const API_URL = "http://172.26.96.1:8080/api/coach/";
 
 const register = (
   email,

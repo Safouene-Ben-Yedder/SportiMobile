@@ -4,15 +4,12 @@ import { styles } from "./style";
 import { NativeBaseProvider } from "native-base";
 import { AuthCoachForm } from "../../components/AuthCoachForm/AuthCoachForm";
 
-export const LoginCoach = () => {
+export const LoginCoach = ({ navigation }) => {
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require("../../assets/Logo.png")}
-        />
-        <AuthCoachForm />
+        <Image style={styles.image} source={require("../../assets/Logo.png")} />
+        <AuthCoachForm navigation={navigation} />
       </View>
     </NativeBaseProvider>
   );
