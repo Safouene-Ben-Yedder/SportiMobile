@@ -72,7 +72,7 @@ export default function ListSeanceScreen({ navigation }) {
               size="xs"
             />
             <Text color="white" fontSize="xs" fontWeight="medium">
-              Delete
+              annuler
             </Text>
           </VStack>
         </Pressable>
@@ -115,6 +115,7 @@ export default function ListSeanceScreen({ navigation }) {
               >
                 {item.objectif}
               </Text>
+              
             </VStack>
             <Spacer />
             <Text

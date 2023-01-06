@@ -324,3 +324,98 @@ exports.findValeursStatistique = (req, res) => {
       });
     });
 };
+
+
+
+// supprimer un Seance créé par le coach par son ID
+exports.delete = (req, res) => {
+  const token = req.params.token;
+  try {
+    var decoded = jwt_decode(token);
+  } catch (error) {
+    res.send({
+      message: "Invalid token format",
+    });
+    return true;
+  }
+
+  const id = req.params.id;
+
+  if (decoded.role === "Coach") {
+    Seance.findOneAndRemove({ _id: req.params.id, createdBy: decoded.user_id })
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot delete Seance with id=${id}. Maybe Seance was not found!`,
+          });
+        } else {
+          res.send({
+            message: "Seance was deleted successfully!",
+          });
+        }
+      })
+      .catch(() => {
+        res.status(500).send({
+          message: "Could not delete Seance with id=" + id,
+        });
+      });
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
+};
+
+
+
+
+// modifier un seance créé par le coach par son ID
+exports.update = (req, res) => {
+  const token = req.params.token;
+  try {
+    var decoded = jwt_decode(token);
+  } catch (error) {
+    res.send({
+      message: "Invalid token format",
+    });
+    return true;
+  }
+
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!",
+    });
+  }
+  const id = req.params.id;
+
+  if (decoded.role === "Coach") {
+    Seance.findOneAndUpdate(
+      { _id: req.params.id, createdBy: decoded.user_id },
+      {
+        nom: req.body.nom,
+        date: req.body.date,
+        periode: req.body.periode,
+        lieu: req.body.lieu,
+        joueur: req.body.joueur,
+        programme: req.body.programme,
+      },
+      { useFindAndModify: false }
+    )
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot update seance with id=${id}. Maybe seance was not found!`,
+          });
+        } else res.send({ message: "seance was updated successfully." });
+      })
+      .catch(() => {
+        res.status(500).send({
+          message: "Error updating seance with id=" + id,
+        });
+      });
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
+};

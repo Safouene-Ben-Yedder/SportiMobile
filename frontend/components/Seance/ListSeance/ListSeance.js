@@ -63,7 +63,7 @@ export const renderItem = ({ item, index, navigation }) => (
             }}
             alignSelf="flex-start"
           >
-            {item.joueur}
+            {item.objectif}
           </Text>
 
           <Text
@@ -75,6 +75,16 @@ export const renderItem = ({ item, index, navigation }) => (
             alignSelf="flex-start"
           >
             {item.programme}
+          </Text>
+          <Text
+            fontSize="xs"
+            color="coolGray.800"
+            _dark={{
+              color: "warmGray.50",
+            }}
+            alignSelf="flex-start"
+          >
+            {item.joueur}
           </Text>
         </HStack>
       </Box>

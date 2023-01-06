@@ -25,10 +25,11 @@ export const SeanceUpdateForm = ({ route, navigation }) => {
             values._id,
             values.nom,
             values.periode,
-            values.date,
-            values.lieu,
-            values.joueur,
-            values.programme,
+            // values.date,
+            // values.lieu,
+            // values.objectif,
+            // values.programme,
+            // values.joueur
           )
           .then((rep) => console.log("resp", rep))
           .catch((e) => console.log("error", e));
@@ -83,7 +84,7 @@ export const SeanceUpdateForm = ({ route, navigation }) => {
             </Stack>
           </FormControl>
 
-          <FormControl isRequired>
+          {/* <FormControl isRequired>
             <Stack mx="10" my="2">
               <FormControl.Label>Lieu</FormControl.Label>
               <Input
@@ -100,15 +101,15 @@ export const SeanceUpdateForm = ({ route, navigation }) => {
 
           <FormControl isRequired>
             <Stack mx="10" my="2">
-              <FormControl.Label>Joueur</FormControl.Label>
+              <FormControl.Label>objectif</FormControl.Label>
               <Input
-                name="joueur"
-                placeholder="joueur"
+                name="objectif"
+                placeholder="objectif"
                 style={styles.textInput}
-                onChangeText={handleChange("joueur")}
-                onBlur={handleBlur("joueur")}
-                value={values.joueur}
-                keyboardType="joueur"
+                onChangeText={handleChange("objectif")}
+                onBlur={handleBlur("objectif")}
+                value={values.objectif}
+                keyboardType="objectif"
               />
             </Stack>
           </FormControl>
@@ -127,6 +128,21 @@ export const SeanceUpdateForm = ({ route, navigation }) => {
               />
             </Stack>
           </FormControl>
+
+          <FormControl isRequired>
+            <Stack mx="10" my="2">
+              <FormControl.Label>Joueur</FormControl.Label>
+              <Input
+                name="joueur"
+                placeholder="joueur"
+                style={styles.textInput}
+                onChangeText={handleChange("joueur")}
+                onBlur={handleBlur("joueur")}
+                value={values.joueur}
+                keyboardType="joueur"
+              />
+            </Stack>
+          </FormControl> */}
 
           <Center>
             <TouchableOpacity style={styles.loginBtn}>

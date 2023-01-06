@@ -46,30 +46,41 @@ const fetchMesSeance = async () => {
   return result.data;
 };
 
-const postSeance = async (nom, date, periode, lieu, joueur, programme) => {
-  const token = await AsyncStorage.getItem("@user");
-  const result = await axios.post(
-    API_URL + token,
-    nom,
-    date,
-    periode,
-    lieu,
-    joueur,
-    programme
-  );
-  return result.data;
+// const postSeance = async (nom, date, periode, lieu, joueur, programme) => {
+//   const token = await AsyncStorage.getItem("@user");
+//   const result = await axios.post(
+//     API_URL + token,
+//     nom,
+//     date,
+//     periode,
+//     lieu,
+//     joueur,
+//     programme
+//   );
+//   return result.data;
+// };
+
+const postSeance = async (seance) => {
+  AsyncStorage.getItem("@user").then(async (token) => {
+    const result = await axios.post(API_URL + token, seance);
+    return result.data;
+  });
 };
 
-const updateSeance = async (id, nom, date, periode, lieu, joueur, programme) => {
+
+// , lieu, objectif, joueur, programme
+
+const updateSeance = async (id, nom, date, periode) => {
   const token = await AsyncStorage.getItem("@user");
   const result = await axios.put(`${API_URL}${id}/${token}`, {
     id,
     nom,
     date,
     periode,
-    lieu,
-    joueur,
-    programme
+    // lieu,
+    // objectif,
+    // joueur,
+    // programme
   
   });
   return result.data;
@@ -84,9 +95,11 @@ const seanceDone = async (id) => {
 };
 
 const deleteSeance = async (id) => {
-  const token = await AsyncStorage.getItem("@user");
-  const result = await axios.delete(`${API_URL}${id}/${token}`);
-  return result.data;
+  AsyncStorage.getItem("@user").then(async (token) => {
+    const result = await axios.delete(`${API_URL}${id}/${token}`);
+    console.log(id);
+    return result.data;
+  });
 };
 
 const seanceService = {
