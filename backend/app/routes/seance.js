@@ -15,5 +15,10 @@ module.exports = (app) => {
   router.put("/coach/seance/feedbackSeance/:id/:token", seance.feedBackSeance);
   router.put("/coach/seance/annulerSeance/:id/:token", seance.annulerSeance);
 
+  router.delete("/coach/seance/:id/:token", seance.delete);
+
+
+
+
   app.use("/api", router);
 };

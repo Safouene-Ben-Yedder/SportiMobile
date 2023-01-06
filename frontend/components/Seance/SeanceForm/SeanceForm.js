@@ -20,9 +20,11 @@ export const SeanceForm = ({ navigation }) => {
   const [success, setSuccess] = useState(false);
   const [msg, setMsg] = useState("");
 
+  // , objectif: "" , programme: "", joueur:"" , lieu: ""  // programme: "", joueur:"" ,,  lieu: ""
+
   return (
     <Formik
-      initialValues={{ nom: "", date: "", periode: "", lieu: "" , joueur: "" , programme: "" }}
+      initialValues={{ nom: "", date: "", periode: "" }}
       onSubmit={(values) => {
         seanceService.postSeance(values).then((rep) => console.log(rep));
         setTimeout(() => {
@@ -76,8 +78,8 @@ export const SeanceForm = ({ navigation }) => {
               />
             </Stack>
           </FormControl>
-
-          <FormControl isRequired>
+ 
+          {/* <FormControl isRequired>
             <Stack mx="10" my="2">
               <FormControl.Label>Lieu</FormControl.Label>
               <Input
@@ -90,24 +92,24 @@ export const SeanceForm = ({ navigation }) => {
                 keyboardType="lieu"
               />
             </Stack>
-          </FormControl>
-
+          </FormControl> */}
+{/* 
           <FormControl isRequired>
             <Stack mx="10" my="2">
-              <FormControl.Label>Joueur</FormControl.Label>
+              <FormControl.Label>Objectif</FormControl.Label>
               <Input
-                name="joueur"
-                placeholder="joueur"
+                name="objectif"
+                placeholder="objectif"
                 style={styles.textInput}
-                onChangeText={handleChange("joueur")}
-                onBlur={handleBlur("joueur")}
-                value={values.joueur}
-                keyboardType="joueur"
+                onChangeText={handleChange("objectif")}
+                onBlur={handleBlur("objectif")}
+                value={values.objectif}
+                keyboardType="objectif"
               />
             </Stack>
-          </FormControl>
+          </FormControl> */}
 
-          <FormControl isRequired>
+          {/* <FormControl isRequired>
             <Stack mx="10" my="2">
               <FormControl.Label>Programme</FormControl.Label>
               <Input
@@ -120,7 +122,22 @@ export const SeanceForm = ({ navigation }) => {
                 keyboardType="programme"
               />
             </Stack>
-          </FormControl>
+          </FormControl> */}
+
+          {/* <FormControl isRequired>
+            <Stack mx="10" my="2">
+              <FormControl.Label>Joueur</FormControl.Label>
+              <Input
+                name="joueur"
+                placeholder="joueur"
+                style={styles.textInput}
+                onChangeText={handleChange("joueur")}
+                onBlur={handleBlur("joueur")}
+                value={values.joueur}
+                keyboardType="joueur"
+              />
+            </Stack>
+          </FormControl>  */}
 
          
 

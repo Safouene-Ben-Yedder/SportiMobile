@@ -21,11 +21,15 @@ export const SeanceShow = ({ route, navigation }) => {
         </Text>
 
         <Text py="1" fontSize={17}>
-          <Text bold>Joueur:</Text> {data.joueur}
+          <Text bold>objectif:</Text> {data.objectif}
         </Text>
 
         <Text py="1" fontSize={17}>
           <Text bold>Programme:</Text> {data.programme}
+        </Text>
+
+        <Text py="1" fontSize={17}>
+          <Text bold>Joueur:</Text> {data.joueur}
         </Text>
 
       </Stack>
