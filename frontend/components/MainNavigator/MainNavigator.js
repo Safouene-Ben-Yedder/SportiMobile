@@ -2,34 +2,30 @@ import * as React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 import { LieuCoach } from "../../screens/LieuCoach/lieuCoach";
-import { ProgrammeCoach } from "../../screens/ProgrammeCoach/programmeCoach";
-import {SeanceCoach} from "../../screens/SeanceCoach/seanceCoach";
-import {DefiCoach }from "../../screens/DefiCoach/defiCoach";
-import {EventCoach} from "../../screens/EventCoach/eventCoach";
-
-// import AbonnementCoach from "../../screens/AbonnementCoach/AbonnementCoach";
-// import DefiCoach from "../../screens/DefiCoach/defiCoach";
-// import EventCoach from "../../screens/EventCoach/eventCoach";
-// import SeanceCoach from "../../screens/SeanceCoach/SeanceCoach";
 import { View } from "native-base";
 import { Button } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthContext } from "../../context/AuthContext";
+import { ProgrammeCoach } from "../../screens/ProgrammeCoach/programmeCoach";
+import { SeanceCoach } from "../../screens/SeanceCoach/seanceCoach";
+import { DefiCoach } from "../../screens/DefiCoach/defiCoach";
+import { EventCoach } from "../../screens/EventCoach/eventCoach";
 import { InvitationForm } from "../Invitation/InvitationForm";
 import { CompCoach } from "../../screens/CompCoach/CompCoach";
 import { StatCoach } from "../../screens/StatCoach/StatCoach";
-// import StatScreen from "../../screens/manageStats/statsScreen";
-// import InvitePlayer from "../../screens/InvitePlayer/invitePlayer";
+// import { PlayersCoach } from "../../screens/MyAccountCoach/PlayersCoach";
+// import CoachProfile from "../../screens/CoachProfile/CoachProfile";
 
 const Drawer = createDrawerNavigator();
 
-const HomeScreen = ({ navigation }) => {
+const Deconnexion = () => {
+  const { logout } = React.useContext(AuthContext);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         onPress={() => {
-          AsyncStorage.clear();
+          logout();
         }}
-        title="Logout"
+        title="Deconnexion"
       />
     </View>
   );
@@ -45,7 +41,8 @@ export default function MainNavigator() {
         headerTintColor: "#fff",
       }}
     >
-      <Drawer.Screen name="Mes lieux" component={LieuCoach} />
+      {/* <Drawer.Screen name="Mon compte" component={CoachProfile} />
+      <Drawer.Screen name="Mes joueurs" component={PlayersCoach} /> */}
       <Drawer.Screen name="Mes Compétences" component={CompCoach} />
       <Drawer.Screen name="Mes statistiques" component={StatCoach} />
       <Drawer.Screen name="Mes programmes" component={ProgrammeCoach} />
@@ -59,8 +56,8 @@ export default function MainNavigator() {
       <Drawer.Screen name="Mes évenements" component={EventCoach} />
       <Drawer.Screen name="Mes statistiques" component={StatScreen} />*/}
       <Drawer.Screen name="Inviter un joueur" component={InvitationForm} />
-
-      <Drawer.Screen name="Logout" component={HomeScreen} />
+      <Drawer.Screen name="Mes lieux" component={LieuCoach} />
+      <Drawer.Screen name="Deconnexion" component={Deconnexion} />
     </Drawer.Navigator>
   );
 }

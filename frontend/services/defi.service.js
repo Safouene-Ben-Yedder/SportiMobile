@@ -1,8 +1,8 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://10.1.1.116:8080/api/coach/defi/";
-const API_URL_Player = "http://10.1.1.116:8080/api/joueur/defi/";
+const API_URL = "http://172.26.96.1:8080/api/coach/defi/";
+const API_URL_Player = "http://172.26.96.1:8080/api/joueur/defi/";
 
 const fetchDefi = async () => {
   const token = await AsyncStorage.getItem("@user");
@@ -62,7 +62,6 @@ const deleteDefi = async (id) => {
   const result = await axios.delete(`${API_URL}${id}/${token}`);
   return result.data;
 };
-
 
 const defiService = {
   fetchDefi,
