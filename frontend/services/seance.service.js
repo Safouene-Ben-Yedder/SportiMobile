@@ -70,10 +70,6 @@ const updateSeance = async (id, nom, date, periode) => {
     nom,
     date,
     periode,
-    // lieu,
-    // objectif,
-    // joueur,
-    // programme
   });
   return result.data;
 };
