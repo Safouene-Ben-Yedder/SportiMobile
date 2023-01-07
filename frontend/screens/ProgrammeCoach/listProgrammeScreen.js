@@ -179,7 +179,7 @@ export default function ListProgrammeScreen({ navigation }) {
                 shadow={2}
                 size="md"
                 placement="bottom-right"
-                bg="#00BFFF"
+                bg="blue"
                 icon={
                   <Icon color="white" as={AntDesign} name="plus" size="sm" />
                 }

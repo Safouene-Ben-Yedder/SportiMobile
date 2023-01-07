@@ -161,7 +161,7 @@ export default function ListDefiScreen({ navigation }) {
           w="100%"
         >
           <Heading p="4" pb="3" size="lg">
-            Liste des défis
+            Défis
           </Heading>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Box bg="white" safeArea flex="1">
@@ -180,7 +180,7 @@ export default function ListDefiScreen({ navigation }) {
                 shadow={2}
                 size="md"
                 placement="bottom-right"
-                bg="#00BFFF"
+                bg="blue"
                 icon={
                   <Icon color="white" as={AntDesign} name="plus" size="sm" />
                 }

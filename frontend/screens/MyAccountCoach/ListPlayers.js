@@ -11,14 +11,13 @@ import {
   Heading,
   Fab,
   Icon,
-  Button,
 } from "native-base";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { ScrollView } from "react-native-gesture-handler";
 import { AntDesign, Entypo, MaterialIcons } from "@expo/vector-icons";
-import StatService from "../../services/Stat.service";
+import CoachService from "../../services/coach.services";
 
-export default function ListStatScreen({ navigation }) {
+export default function playersList({ navigation }) {
   const [listData, setListData] = useState("");
 
   const closeRow = (rowMap, rowKey) => {
@@ -29,7 +28,7 @@ export default function ListStatScreen({ navigation }) {
 
   const deleteRow = (rowMap, rowKey) => {
     closeRow(rowMap, rowKey);
-    StatService.deleteStat(rowKey);
+    CoachService.deletePlayer(rowKey);
   };
 
   const renderHiddenItem = (data, rowMap) => {
@@ -42,7 +41,7 @@ export default function ListStatScreen({ navigation }) {
           bg="success.700"
           justifyContent="center"
           onPress={() =>
-            navigation.navigate("Modifier une statistique", { data: data.item })
+            navigation.navigate("Modifier un joueur", { data: data.item })
           }
           _pressed={{
             opacity: 0.5,
@@ -88,7 +87,7 @@ export default function ListStatScreen({ navigation }) {
     <Box>
       <Pressable
         onPress={() =>
-          navigation.navigate("Afficher une statistique", { data: item })
+          navigation.navigate("Afficher un joueur", { data: item })
         }
         _dark={{
           bg: "coolGray.800",
@@ -107,7 +106,7 @@ export default function ListStatScreen({ navigation }) {
                 }}
                 bold
               >
-                {item.nom}
+                {item.prenom} {item.nom}
               </Text>
               <Text
                 color="coolGray.600"
@@ -115,7 +114,7 @@ export default function ListStatScreen({ navigation }) {
                   color: "warmGray.200",
                 }}
               >
-                {item.description}
+                {item.email}
               </Text>
             </VStack>
             <Spacer />
@@ -127,7 +126,7 @@ export default function ListStatScreen({ navigation }) {
               }}
               alignSelf="flex-start"
             >
-              {item.objectif}
+              {item.adresse}
             </Text>
           </HStack>
         </Box>
@@ -137,7 +136,7 @@ export default function ListStatScreen({ navigation }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await StatService.fetchAllStats()
+      await CoachService.playersList()
         .then((result) => setListData(result))
         .catch((e) => console.log("error", e));
     };
@@ -160,7 +159,7 @@ export default function ListStatScreen({ navigation }) {
           w="100%"
         >
           <Heading p="4" pb="3" size="lg">
-            Liste des statistiques
+            Liste des joueurs
           </Heading>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Box bg="white" safeArea flex="1">
@@ -175,7 +174,7 @@ export default function ListStatScreen({ navigation }) {
                 onRowDidOpen={onRowDidOpen}
               />
               <Fab
-                onPress={() => navigation.navigate("Ajout d'une statistique")}
+                onPress={() => navigation.navigate("Ajout d'un joueur")}
                 shadow={2}
                 size="md"
                 placement="bottom-right"

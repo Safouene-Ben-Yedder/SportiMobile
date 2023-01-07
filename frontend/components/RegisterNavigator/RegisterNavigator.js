@@ -11,7 +11,7 @@ export default function RegisterNavigator() {
       useLegacyImplementation
       initialRouteName="Register"
       screenOptions={{
-        headerStyle: { backgroundColor: "#00BFFF" },
+        headerStyle: { backgroundColor: "blue" },
         headerTintColor: "#fff",
       }}
     >

@@ -3,7 +3,7 @@
 export const styles = StyleSheet.create({
   inputView: {
     backgroundColor: "#FFFFFF",
-    borderColor: "#00BFFF",
+    borderColor: "blue",
     borderWidth: 1,
     borderRadius: 10,
     width: 300,
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#00BFFF",
+    backgroundColor: "blue",
     color: "#FFFFFF",
   },
 
