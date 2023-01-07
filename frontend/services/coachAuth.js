@@ -2,7 +2,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import JwtDecode from "jwt-decode";
 
-const API_URL = "http://172.26.96.1:8080/api/coach/";
+const API_URL = "http://192.168.1.21:8080/api/coach/";
 
 const register = (
   email,
@@ -50,7 +50,13 @@ const getCurrentUser = async () => {
   const result = await axios.get(`${API_URL}profile/${token}`);
   return result.data;
 };
-
+const updateAbonnement = async (abonnement) => {
+  const token = await AsyncStorage.getItem("@user");
+  const result = await axios.put(`${API_URL}payement/${token}`, {
+    abonnement,
+  });
+  return result.data;
+};
 const authVerify = () => {
   AsyncStorage.getItem("@user").then((user) => {
     if (user) {
@@ -75,4 +81,5 @@ export const AuthService = {
   logout,
   getCurrentUser,
   authVerify,
+  updateAbonnement,
 };

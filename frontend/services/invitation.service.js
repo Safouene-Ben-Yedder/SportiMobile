@@ -1,7 +1,7 @@
 ﻿import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://172.26.96.1:8080/api/coach/inviter/joueur/";
+const API_URL = "http://192.168.1.21:8080/api/coach/inviter/joueur/";
 
 const SendInvitation = async (invitation) => {
   AsyncStorage.getItem("@user").then(async (token) => {

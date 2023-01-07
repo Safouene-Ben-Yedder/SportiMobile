@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import { styles } from "./style";
 import { NativeBaseProvider } from "native-base";
-import { RegisterCoachForm } from "../../components/RegisterCoachForm/registerCoachForm";
+import { RegisterCoachForm } from "../../components/RegisterCoachForm/RegisterCoachForm";
 
 export const RegisterCoach = ({ navigation }) => {
   return (
